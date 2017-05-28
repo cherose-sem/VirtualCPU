@@ -1,5 +1,7 @@
 # Virtual CPU
-
+************
+Should be ran from Main.java wherein it gets the set of instructions from "instructions.txt". In addition, reading from "factTail.txt" would use tail recursive.
+************
 Screen dumps
 
 factorial calculates `5!`
@@ -82,4 +84,26 @@ A: [0000 0000]   0    | IP: [00 0000]   0
 B: [0000 0000]   0    | SP: [00 0000]   0   
 F: false
 ```
-
+TAIL RECURSIVE:
+```
+MOV 1 A
+PUSH A
+MOV 5 A
+PUSH A
+ALWAYS
+CALL 8
+POP A
+HALT
+MOV +1 A
+NZERO
+JMP 12
+RTN +1
+MOV +2 B
+MUL
+MOV A +2
+MOV +1 A
+DEC
+MOV A +1
+ALWAYS
+JMP 8
+```
