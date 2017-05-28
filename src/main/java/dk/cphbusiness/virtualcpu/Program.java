@@ -99,27 +99,14 @@ public class Program implements Iterable<Integer> {
                 }
                 break;
             case "MOV": // MOV A B - 0001 0100 , MOV B A - 0001 0101
-//                if(parts[1].equals("A") && parts[2].equals("B")) byteInstr = 0b0001_0100;
-//                if(parts[1].equals("B") && parts[2].equals("A")) byteInstr = 0b0001_0101;
-//                // = 0010 rooo MOV r o
-//                if(!(parts[2].equals("A")) && !(parts[2].equals("B"))){
-//                    int r = parts[1].equals("B") ? 1 : 0;
-//                    int o = Integer.parseInt(parts[2]);
-//                    byteInstr = 0b0010_0000 | (r << 3) | o;
-//                }
-//                // = 0011 ooor MOV o r
-//                if(!(parts[1].equals("A")) && !(parts[1].equals("B"))){
-//                    int r = parts[1].equals("B") ? 1 : 0;
 //                    //still getting confused in here :/
-//                }
 
                 if (parts[1].equals("A") || parts[1].equals("B")) {
                     int r = parts[1].equals("B") ? 1 : 0;
                     int o = Integer.parseInt(parts[2]);
                     return 0b0010_0000 | (r << 3) | o;
                 } else if (parts[2].equals("A") || parts[2].equals("B")) {
-                    int r = parts[1].equals("B") ? 1 : 0;
-                    // 2 interpretations?!
+                    int r = parts[2].equals("B") ? 1 : 0;
                     if (parts[1].startsWith("+")) {
                         return 0b0011_0000 | Integer.parseInt(parts[1]) << 1 | r;
                     } else {
